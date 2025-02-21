@@ -1,0 +1,14 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+^[aeiouAEIOU].*    { printf("Valid String: %s\n", yytext); }
+.|\n                {  }
+%%
+
+int main() {
+    printf("Enter a string: ");
+    yylex();
+    return 0;
+}

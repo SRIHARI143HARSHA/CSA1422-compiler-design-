@@ -1,0 +1,23 @@
+%{
+#include <stdio.h>
+#include <string.h>
+
+int valid_dob = 0;
+%}
+
+%%
+([0-2][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4} {
+                                        printf("Valid DOB: %s\n", yytext);
+                                        valid_dob = 1;
+                                    }
+.|\n              {  }
+%%
+
+int main() {
+    printf("Enter Date of Birth (DD/MM/YYYY): ");
+    yylex();
+    if (!valid_dob) {
+        printf("Invalid DOB.\n");
+    }
+    return 0;
+}

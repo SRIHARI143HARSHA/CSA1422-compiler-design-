@@ -1,0 +1,23 @@
+%{
+#include <stdio.h>
+#include <string.h>
+
+int valid_url = 0;
+%}
+
+%%
+http[s]?://[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}(/[\w\.-]*)*  {
+                                                    printf("Valid URL: %s\n", yytext);
+                                                    valid_url = 1;
+                                                }
+.|\n              { }
+%%
+
+int main() {
+    printf("Enter a URL: ");
+    yylex();
+    if (!valid_url) {
+        printf("Invalid URL.\n");
+    }
+    return 0;
+}

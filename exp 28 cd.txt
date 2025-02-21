@@ -1,0 +1,19 @@
+BEGIN
+    SET vowel_count = 0
+    SET consonant_count = 0
+    SET vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+    PRINT "Enter a sentence:"
+    INPUT sentence
+
+    FOR each character ch in sentence DO
+        IF ch is in vowels THEN
+            INCREMENT vowel_count
+        ELSE IF ch is an alphabetic character THEN
+            INCREMENT consonant_count
+        ENDIF
+    END FOR
+
+    PRINT "Number of vowels: ", vowel_count
+    PRINT "Number of consonants: ", consonant_count
+END
